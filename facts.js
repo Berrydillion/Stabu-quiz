@@ -1,0 +1,28 @@
+// Extra fact cards (front / back / English note), alongside every quiz question
+const FACTS = [
+{a:"g",f:"1683",b:"Zweite Türkenbelagerung Wiens: Wien wird befreit.",en:"Second Ottoman siege of Vienna. The city was relieved."},
+{a:"g",f:"1814/15",b:"Wiener Kongress: Neuordnung Europas nach Napoleon.",en:"Congress of Vienna: Europe reorganised after Napoleon."},
+{a:"g",f:"1867",b:"Ausgleich mit Ungarn: Doppelmonarchie Österreich-Ungarn.",en:"Compromise with Hungary created the dual monarchy."},
+{a:"g",f:"12. November 1918",b:"Ausrufung der Republik (Deutsch-)Österreich.",en:"The republic was proclaimed."},
+{a:"g",f:"März 1938",b:"„Anschluss“: Österreich wird Teil des nationalsozialistischen Deutschen Reiches.",en:"Austria annexed by Nazi Germany."},
+{a:"g",f:"27. April 1945",b:"Unabhängigkeitserklärung: Beginn der Zweiten Republik (Karl Renner).",en:"Declaration of independence and start of the Second Republic."},
+{a:"g",f:"15. Mai 1955",b:"Unterzeichnung des Staatsvertrages im Schloss Belvedere.",en:"State Treaty signed at Belvedere."},
+{a:"g",f:"26. Oktober",b:"Nationalfeiertag: 1955 Beschluss der immerwährenden Neutralität.",en:"National Day, marking the 1955 neutrality law."},
+{a:"g",f:"1995 / 2002",b:"EU-Beitritt (1995) / Euro als Bargeld (2002).",en:"Joined the EU in 1995; euro cash since 2002."},
+{a:"d",f:"Bundesverfassung",b:"Bundes-Verfassungsgesetz (B-VG) von 1920. Grundprinzipien: demokratisch, republikanisch, bundesstaatlich, rechtsstaatlich, gewaltenteilend, liberal.",en:"Constitution of 1920 and its basic principles."},
+{a:"d",f:"Gewaltenteilung",b:"Gesetzgebung (Parlament) · Verwaltung (Regierung, Behörden) · Gerichtsbarkeit (unabhängige Gerichte).",en:"Legislature, executive, judiciary."},
+{a:"d",f:"Parlament",b:"Nationalrat (183 Abgeordnete, alle 5 Jahre gewählt) + Bundesrat (Vertretung der Bundesländer).",en:"National Council (183) plus Federal Council (represents the states)."},
+{a:"d",f:"Bundespräsident",b:"Staatsoberhaupt, direkt gewählt für 6 Jahre. Derzeit Alexander Van der Bellen.",en:"Head of state, 6-year term."},
+{a:"d",f:"Wahlrecht",b:"Ab 16 Jahren. Allgemein, gleich, unmittelbar, persönlich, geheim, frei.",en:"Voting from 16; the six principles."},
+{a:"d",f:"Direkte Demokratie",b:"Volksabstimmung (bindend) · Volksbefragung (nicht bindend) · Volksbegehren (ab 100.000 Unterschriften im Nationalrat).",en:"Referendum, consultation, citizens' initiative."},
+{a:"d",f:"Höchstgerichte",b:"Verfassungsgerichtshof (VfGH) · Verwaltungsgerichtshof (VwGH) · Oberster Gerichtshof (OGH).",en:"The three supreme courts."},
+{a:"d",f:"Kontrolle des Staates",b:"Rechnungshof (öffentliche Gelder) · Volksanwaltschaft (Beschwerden über Verwaltung).",en:"Court of Audit and ombudsman board."},
+{a:"d",f:"9 Bundesländer",b:"Burgenland, Kärnten, Niederösterreich, Oberösterreich, Salzburg, Steiermark, Tirol, Vorarlberg, Wien.",en:"The nine federal states."},
+{a:"d",f:"Sozialpartner",b:"ÖGB · Wirtschaftskammer · Arbeiterkammer · Landwirtschaftskammer.",en:"Unions, employers and chambers working together."},
+{a:"d",f:"Staatssymbole",b:"Flagge rot-weiß-rot · Bundeswappen mit Adler · Bundeshymne „Land der Berge, Land am Strome“.",en:"Flag, coat of arms, national anthem."},
+{a:"w",f:"Wien in Zahlen",b:"Bundeshauptstadt, Bundesland und Gemeinde · rund 2 Millionen Einwohner · 23 Bezirke (seit 1954) · seit 1922 eigenes Bundesland.",en:"Vienna: capital, state and city."},
+{a:"w",f:"Bürgermeister",b:"Zugleich Landeshauptmann. Derzeit Dr. Michael Ludwig. Sitz: Rathaus (seit 1883).",en:"Mayor = governor."},
+{a:"w",f:"Gemeinderat",b:"100 Mitglieder, zugleich Wiener Landtag. Regierung: SPÖ–NEOS.",en:"100-member council, also the state parliament."},
+{a:"w",f:"Ringstraße",b:"Ab 1857 Abriss der Stadtmauer unter Kaiser Franz Joseph, 1865 eröffnet. Prachtbauten: Oper, Parlament, Rathaus, Universität.",en:"Built where the old city walls stood."},
+{a:"w",f:"Rotes Wien (1920–1934)",b:"Soziale Reformen, ca. 65.000 Gemeindewohnungen. Heute ca. 220.000 Gemeindewohnungen (Wiener Wohnen).",en:"Interwar social housing programme."}
+];
