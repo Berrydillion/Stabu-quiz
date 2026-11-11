@@ -1,5 +1,5 @@
 const AREAS = {g:"Geschichte", d:"Demokratie", w:"Wien"};
-const EXAM = new Date(2026, 10, 25);
+const EXAM = new Date(2027, 0, 13);
 const ROUND = 20;
 const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
@@ -106,43 +106,41 @@ document.addEventListener("keydown", e => {
   if (e.key === "2") rate(true);
 });
 
-// ---------- 15-day plan, 10 to 24 November ----------
+// ---------- 9-week plan, 11 November 2026 to 12 January 2027 ----------
 const PLAN = [
   ["Grundlagen", [
-    [10, "<b>Geschichte:</b> all history flashcards, then practise the Geschichte area in the quiz."],
-    [11, "<b>Geschichte:</b> history cards again, then use “Fehler üben” in the quiz. Learn the key dates: 1273, 1848, 1918, 1938, 1945, 1955, 1995."],
-    [12, "<b>Demokratie:</b> all democracy flashcards, then practise the Demokratie area in the quiz."],
-    [13, "<b>Demokratie:</b> democracy cards again, then “Fehler üben”. Focus on the institutions: Nationalrat, Bundespräsident, the courts, Rechnungshof."],
-    [14, "<b>Wien:</b> all Vienna flashcards, then practise the Wien area in the quiz."],
-    [15, "<b>Wien:</b> Vienna cards again, then “Fehler üben”. Focus on the sights, Rotes Wien, water and the Gemeinderat."]
+    ["2026-11-11", "2026-11-15", "<b>Geschichte I (Römer bis 1918):</b> history flashcards every day, then practise the Geschichte area in the quiz. Key dates: 996, 1273, 1740–1780, 1848, 1867, 1918."],
+    ["2026-11-16", "2026-11-22", "<b>Geschichte II (1918 bis heute):</b> First Republic, 1933/34, 1938, 1945, 1955, the 1970s, 1989, 1995. At the weekend, read the history chapter of the BMI booklet."],
+    ["2026-11-23", "2026-11-29", "<b>Demokratie I:</b> human dignity, fundamental rights, freedoms, the rule of law, the courts. Democracy cards daily plus the Demokratie area in the quiz."],
+    ["2026-11-30", "2026-12-06", "<b>Demokratie II:</b> voting, Nationalrat, Bundespräsident, government, federation and states, control bodies, NGOs, EU. At the weekend, read the democracy chapter of the booklet."],
+    ["2026-12-07", "2026-12-13", "<b>Wien I:</b> Roman Vienna, the town charter, Red Vienna, the Nazi era, 1945–1955, the city's politics (Gemeinderat, Bürgermeister, coat of arms)."],
+    ["2026-12-14", "2026-12-20", "<b>Wien II:</b> Schönbrunn, Stephansdom, Prater, Belvedere, Donauinsel, water, U-Bahn, the UN. At the weekend, read the whole Stadt Wien guide."]
   ]],
   ["Festigen", [
-    [16, "First <b>exam simulation</b>, then mixed cards (Alle). Note your weakest area."],
-    [17, "Cards for your weakest area, then go through all quiz questions in practice mode."],
-    [18, "Read the official BMI booklet (the history and democracy chapters). Then one simulation."],
-    [19, "Read the Stadt Wien guide in full. Then one simulation and the “Schwache Karten” set."],
-    [20, "<b>Turn English off in the quiz from now on.</b> Do one simulation and the full card set."]
+    ["2026-12-21", "2026-12-27", "<b>Holiday week, kept light:</b> 15 minutes of mixed flashcards a day, plus one game (Marathon). Do your <b>first exam simulation</b> and note your weakest area."],
+    ["2026-12-28", "2027-01-03", "<b>Weakest area:</b> extra cards and quiz rounds for it, plus 3 exam simulations. <b>From 1 January, turn the English notes off.</b>"]
   ]],
   ["Prüfungsmodus", [
-    [21, "Two simulations in German only. Aim for 14+ points so you have a safety margin."],
-    [22, "Rest-ish day: the “Schwache Karten” set plus “Fehler üben”."],
-    [23, "Two simulations. Aim for 15+ points and 3+ points in every area."],
-    [24, "Light review: weak cards only. Check your exam letter, the time and place, and pack your ID. Sleep early."]
+    ["2027-01-04", "2027-01-10", "<b>One exam simulation every day</b>, German only. Aim for 15+ points and 3+ in every area. Use “Fehler üben” and the “Schwache Karten” set."],
+    ["2027-01-11", "2027-01-12", "<b>Light review:</b> weak cards only. Check current officeholders (Bundespräsident, Bürgermeister, Vienna coalition). Check your exam letter, time and place, and pack your ID."]
   ]]
 ];
 
 function plan() {
-  const done = store.get("stabu-plan", {});
-  const today = new Date(), td = today.getMonth() === 10 && today.getFullYear() === 2026 ? today.getDate() : 0;
-  const wd = d => new Date(2026, 10, d).toLocaleDateString("de-AT", {weekday: "short"});
+  const done = store.get("stabu-plan-jan", {});
+  const t = new Date(); t.setHours(0, 0, 0, 0);
+  const d = s => { const [y, m, dd] = s.split("-").map(Number); return new Date(y, m - 1, dd); };
+  const lbl = s => d(s).toLocaleDateString("de-AT", {day: "numeric", month: "short"});
   const el = document.getElementById("plan");
-  el.innerHTML = PLAN.map(([ph, days]) => `<div class="phase">${ph}</div>` + days.map(([d, t]) =>
-    `<label class="day ${done[d] ? "done" : ""} ${d === td ? "today" : ""} ${d < td ? "past" : ""}">
-      <input type="checkbox" data-d="${d}" ${done[d] ? "checked" : ""}>
-      <span class="d">${d}. Nov<small>${wd(d)}${d === td ? " · heute" : ""}</small></span>
-      <span class="t">${t}</span></label>`).join("")).join("") +
-    `<div class="phase">25. November</div><div class="day today" style="grid-template-columns:minmax(0,1fr)"><span class="t"><b>Prüfung. Viel Erfolg!</b> Remember: only tick answers you're sure of.</span></div>`;
-  el.querySelectorAll("input").forEach(i => i.onchange = () => { done[i.dataset.d] = i.checked; store.set("stabu-plan", done); plan(); });
+  el.innerHTML = PLAN.map(([ph, weeks]) => `<div class="phase">${ph}</div>` + weeks.map(([from, to, txt]) => {
+    const now = t >= d(from) && t <= d(to), past = t > d(to);
+    return `<label class="day ${done[from] ? "done" : ""} ${now ? "today" : ""} ${past ? "past" : ""}">
+      <input type="checkbox" data-d="${from}" ${done[from] ? "checked" : ""}>
+      <span class="d">${lbl(from)}<small>bis ${lbl(to)}${now ? " · jetzt" : ""}</small></span>
+      <span class="t">${txt}</span></label>`;
+  }).join("")).join("") +
+    `<div class="phase">13. Jänner 2027</div><div class="day today" style="grid-template-columns:minmax(0,1fr)"><span class="t"><b>Prüfung. Viel Erfolg!</b> Remember: only tick answers you're sure of.</span></div>`;
+  el.querySelectorAll("input").forEach(i => i.onchange = () => { done[i.dataset.d] = i.checked; store.set("stabu-plan-jan", done); plan(); });
 }
 
 countdown(); filters(); newRound(); plan();
